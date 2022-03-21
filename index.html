@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Calculadora de Pestamos</title>
+</head>
+<body>
+    <header class="header">
+        <img src="img/logoHeader.png" alt="Logo">
+        <h1 id="saludo">BANCO INTERNACIONAL</h1>
+    </header>
+    <main class="main">
+        <section class="contenedor__frase">
+            <span> Frase del día </span>
+            <p id="frase">
+                "La vida es una caja de tiempo, no una caja de sueños"
+            </p>
+        </section>
+        <section class="contenedor__calculadora">
+            <h2>CÁLCULADORA DE PRESTAMOS</h2>
+            <div class="contenedor__calculadora-inputs">
+                <label for="nivelUsuario">Escribe tu Nivel de usuario: <br>1. Nivel Bronce, 2. Nivel Plata <br>3. Nivel Oro, 4. Nivel Diamante </label>
+                <input type="number" id="nivelUsuario" value="" placeholder="0">
+                <label for="dineroPrestado">Escribe el monto del prestamo: </label>
+                <input type="number" id="dineroPrestado" value="" placeholder="0">
+                <label for="plazoSeleccionado">Escribe el plazo deseado: </label>
+                <input type="number" id="plazoSeleccionado" value="" placeholder="0">
+                <button id="calcular" type="button">Calcular</button>
+            </div>
+            <div class="contenedor__calculadora-resultado">
+                <p>RESÚMEN DE PRESTAMO:</p>
+                <label id="resultado"></label>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="contenedor__footer">
+            <p>Acerca del creador</p>
+            <ul>
+                <a href="https://github.com/gnigrinis"><img src="img/github.png" alt="Ícono de Github"></a>
+                <a href="https://www.linkedin.com/in/giancarlonigrinis/"><img src="img/linkedin.png" alt="Ícono de Linkdin"></a>           
+            </ul>
+        </div>
+    </footer>
+    <script src="js/objetoConstructor.js"></script>
+    <script src="./js/miArchivo.js"></script>
+</body>
+</html>
