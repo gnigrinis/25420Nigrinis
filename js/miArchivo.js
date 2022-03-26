@@ -154,12 +154,6 @@ function calculadoraDePrestamos(){
                 text: 'El valor ingresado debe ser un número mayor a 0',
             })
         }
-    } else {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Nivel de usuario no valido, debe ser un número entre 1 y 4',
-        })
     }
 }
 //----FIN DE CÁLCULO DE PRESTAMO----//
