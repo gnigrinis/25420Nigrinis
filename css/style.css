@@ -1,6 +1,8 @@
 :root{
 --text-color: #E8F0F2;
+--text-color-dark: #2C2C2C;
 --background-main: #39A2DB;
+--background-secondary: #053742;
 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 *{
@@ -21,7 +23,7 @@ html{
     flex-direction: row;
     width: 100%;
     height: 7rem;
-    background-color: #053742;
+    background-color: var(--background-secondary);
 }
 .header img{
     width: 4.8rem;
@@ -31,7 +33,58 @@ html{
     font-size: 2rem;
     height: 1.2rem;
 }
+/*-----------SLIDER BTN---------------*/
+.switchBtn {
+    position: relative;
+    display: inline-block;
+    width: 110px;
+    height: 34px;
+    left: 100%;
+}
+.switchBtn input {display:none;}
+.slide {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--background-secondary);
+    -webkit-transition: .4s;
+    transition: .4s;
+    padding: 8px;
+    color: var(--text-color);
+}
+.slide:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 78px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+input:checked + .slide {
+    background-color: var(--background-main);
+    padding-left: 40px;
+}
+input:checked + .slide:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    left: -20px;
+}
+.slide.round {
+    border-radius: 34px;
+}
+.slide.round:before {
+    border-radius: 50%;
+}
+/*-----------------------------------*/
 
+/*-----------MAIN---------------*/
 .main {
     display: flex;
     align-items: center;
@@ -39,19 +92,26 @@ html{
     height: calc(100vh - 7rem - 8rem);
     flex-direction: column;
 }
+.fit-content{
+    height: fit-content;
+}
 .contenedor__frase{
+    display: flex;
+    flex-direction: column;
     width: 30rem;
     height: auto;
     background-color: rgba(162, 219, 250, 0.3);
     color: var(--text-color);
     margin: 1rem;
 }
-.contenedor__frase span{
+.contenedor__frase h2{
     font-size: 2rem;
+    text-align: center;
 }
 .contenedor__frase p{
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin: 0.5rem;
+    text-align: center;
 }
 .contenedor__calculadora{
     width: 30rem;
@@ -61,19 +121,25 @@ html{
 }
 .contenedor__calculadora h2{
     text-align: center;
+    font-size: 1.5rem;
     margin: 1rem;
+}
+.contenedor__calculadora label{
+    font-size: 1.5rem;
+    margin-top: 0.8rem;
 }
 .contenedor__calculadora-inputs{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 1rem;
+    font-size: 1.5rem;
 }
-.contenedor__calculadora-inputs label{
+.contenedor__calculadora-inputs div{
     color: var(--text-color);
     font-size: 1.2rem;
 }
-.contenedor__calculadora-inputs label,input,button{
+.contenedor__calculadora-inputs div,input,button{
     margin: 0.2rem;
 }
 .contenedor__calculadora-inputs input{
@@ -82,7 +148,7 @@ html{
 .contenedor__calculadora-inputs button{
     margin-top: 1rem;
 }
-.contenedor__calculadora-resultado label{
+.contenedor__calculadora-resultado div{
     align-self: center;
 }
 .contenedor__calculadora-resultado{
@@ -90,21 +156,61 @@ html{
     flex-direction: column;
     margin: 0.4rem;
 }
-.contenedor__calculadora-resultado p{
-    margin: 1rem;
+.contenedor__calculadora-resultado h3{
+    margin: 1rem 1rem 0rem 1rem;
     font-size: 1.2rem;
     font-weight: bold;
     align-self: center;
 }
-.contenedor__calculadora-resultado label{
+
+.contenedor__calculadora-resultado div{
     font-size: 1.6rem;
     font-weight: bold;
     text-align: left;
     margin: 1rem;
 }
 
+.contenedor__resultado-detallado{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-color);
+    background-color: rgba(162, 219, 250, 0.3);
+    margin: 1rem;
+    width: 30rem;
+}
+.contenedor__resultado-detallado table{
+    border: var(--text-color) solid 2px;
+    width: 30rem;
+}
+
+.contenedor__resultado-detallado table td{
+    text-align: center;
+}
+
+#resultado h4,p{
+    display: inline;
+}
+
+#resultado h4{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0.1rem;
+}
+
+#resultado p{
+    font-size: 1.4rem;
+    margin-left: 1rem;
+    font-style: italic;
+}
+
+#resultado span{
+font-size: 1.5rem;
+}
+
+/*-------------FOOTER---------------*/
 footer{
-    background-color: #053742;
+    background-color: var(--background-secondary);
     height: 8rem;
     width: 100%;
     display: flex;

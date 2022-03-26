@@ -1,3 +1,38 @@
+//----MODO OSCURO Y LOCAL STORAGE----//
+let modoOscuro = document.getElementsByClassName("switchBtn");
+
+//Verificando estado almacenado en local Storage//
+if (localStorage.getItem("Modo Oscuro") == "true"){
+    modoOscuro[0].control.checked = true;
+    modoOscuroActivado();
+}else if(localStorage.getItem("Modo Oscuro") == "false"){
+    modoOscuro[0].control.checked = false;
+    modoOscuroActivado();
+}
+
+//Evento para cambiar el estado del modo oscuro//
+modoOscuro[0].addEventListener("click", modoOscuroActivado);
+
+//Función para cambiar el estado del modo oscuro
+function modoOscuroActivado(){
+    
+    let estadoModoOscuro = modoOscuro[0].control.checked;
+    if(estadoModoOscuro==true){
+        document.querySelector("body > header").style.backgroundColor = "var(--background-main)";
+        document.querySelector("body > main").style.backgroundColor = "var(--background-secondary)";
+        document.querySelector("body > footer").style.backgroundColor = "var(--background-main)";
+        //Almacenando estado en local Storage//
+        localStorage.setItem("Modo Oscuro", estadoModoOscuro);
+    }else if(estadoModoOscuro==false){
+        document.querySelector("body > header").style.backgroundColor = "var(--background-secondary)";
+        document.querySelector("body > main").style.backgroundColor = "var(--background-main)";
+        document.querySelector("body > footer").style.backgroundColor = "var(--background-secondary)";
+        //Almacenando estado en local Storage//
+        localStorage.setItem("Modo Oscuro", estadoModoOscuro);
+}}
+//----FIN MODO OSCURO----//
+
+
 //----FRASE DEL DÍA------//
 //Array de paises
 const frases = [
@@ -48,26 +83,21 @@ function calculadoraDePrestamos(){
     //Nivel de usuario tomado de HTML
     let nivelUsuario = parseInt(document.getElementById("nivelUsuario").value);
     if (nivelUsuario > 0 && nivelUsuario < 5) {
-        console.log(`Nivel de usuario seleccionado: ${nivelUsuario}`);
-        
         //------------METODO DE ARRAY-----------//
         //Aplicando metodo array para extraer el interes deseado
         let interesSeleccionado = arregloDeIntereses.find((arregloDeIntereses) => arregloDeIntereses.id == nivelUsuario);
         const interes = interesSeleccionado.interes;
         const nivel = interesSeleccionado.nivel;
-        console.log(`Interes: ${interes} Nivel: ${nivel}`);
         //-------FIN DE METODO DE ARRAY--------//
         
         //Dinero prestado tomado de HTML
         let dineroPrestado = parseInt(document.getElementById("dineroPrestado").value);
-        console.log(`Monto a prestar: ${dineroPrestado}`);
 
         //Validación de valor ingresado en dinero a prestar
         if (!isNaN(dineroPrestado) && parseInt(dineroPrestado)>0) {
             
             //Selección de plazo de prestamo tomado de HTML
             let plazoSeleccionado= parseInt(document.getElementById("plazoSeleccionado").value);
-            console.log(`Plazo seleccionado: ${plazoSeleccionado}`);
             
             //Validación de valor ingresado en plazo
             if (!isNaN(plazoSeleccionado) && parseInt(plazoSeleccionado)>0) {
@@ -85,25 +115,32 @@ function calculadoraDePrestamos(){
                 let montoTotal = prestamo1.montoTotal;
                 const total = prestamo1.montoTotal;
                 //-------FIN DE CONSTRUYENDO OBJETO--------//
-
-                //-----------------IMPRIMIENDO RESULTADOS------------------//
-                //Tabla de prestamo detallado en consola
-                let p = document.createElement("p");
-                for (let i=1; i<=plazoSeleccionado; i++){
-                    console.log(`Cuota ${i}: $${montoMensual.toFixed(2)} interes: $${montoInteres.toFixed(2)} total: $${montoTotalMensual.toFixed(2)} deuda pendiente: $${montoTotal.toFixed(2)}`);
-                    montoTotal=montoTotal-montoTotalMensual;
+                
+                //Cambiando CSS de main para ajustar altura de tabla de resultados 
+                if (plazoSeleccionado > 1) {
+                    let main = document.getElementsByClassName("main");
+                    main[0].className = "main fit-content";
                 }
                 
+                //-----------------IMPRIMIENDO RESULTADOS------------------//
+                //Tabla de prestamo detallado en consola
+                let tabla = document.getElementById("tabla");
+                //limpiando resultado anterior
+                tabla.innerHTML = "";
+                //Creando tabla de resultado
+                for (let i=1; i<=plazoSeleccionado; i++){
+                    tabla.innerHTML = tabla.innerHTML + `<table border="1"><tr><th>#</th><th>Cuota</th><th>Interes</th><th>Total</th><th>Deuda pendiente</th></tr><tr><td> ${i} </td><td> $${montoMensual.toFixed(2)} </td><td> $${montoInteres.toFixed(2)} </td><td> $${montoTotalMensual.toFixed(2)} </td><td> $${montoTotal.toFixed(2)} </td></tr></table>`;
+                    montoTotal=montoTotal-montoTotalMensual;
+                }
+
                 //Resumen de prestamo en HTML
                 let resultado = document.getElementById("resultado");
-                resultado.innerHTML = (`Nivel: ${nivel} <br>
-                Prestado: $${dineroPrestado}  <br>
-                El monto a pagar es de $${montoTotalMensual.toFixed(2)} <br>
-                durante ${plazoSeleccionado} meses  <br>
-                Total a pagar $${total} <br>
-                *Vea tabla detallada en consola de javascript <br>
-                <br>
-                Gracias por usar nuestra calculadora`);
+                resultado.innerHTML = (`<h4>Nivel:</h4> <p>${nivel}</p> <br>
+                <h4>Prestado:</h4> <p>$${dineroPrestado}</p>  <br>
+                <h4>Interes:</h4> <p>% ${interes*100}</p> <br>
+                <h4>El monto a pagar es de</h4> <p>$${montoTotalMensual.toFixed(2)}</p> <br>
+                <h4>durante</h4> <p>${plazoSeleccionado} meses</p>  <br>
+                <h4>Total a pagar</h4> <p>$${total}</p> <br>`);
                 //-----------------FIN DE IMPRIMIENDO RESULTADOS------------------//
             }else{
                 alert("El valor ingresado debe ser un número mayor a 0");
@@ -115,3 +152,4 @@ function calculadoraDePrestamos(){
         alert(`Nivel de usuario no valido, debe ser un número entre 1 y 4`);
     }
 }
+
