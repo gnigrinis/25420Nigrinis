@@ -64,7 +64,7 @@ const arregloDeIntereses = [{
     interes: 0.015
 },{
     id: 4,
-    nivel: "Platino", 
+    nivel: "Diamante", 
     interes: 0.010
 }];
 //----FIN DE ARRAY DE OBJETO DE INTERESES----//
