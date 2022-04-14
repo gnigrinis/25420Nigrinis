@@ -101,7 +101,25 @@ input:checked + .slide:before {
 .fit-content{
     height: fit-content;
 }
-
+.contenedor__conversor{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 30rem;
+  height: auto;
+  background-color: rgba(162, 219, 250, 0.3);
+  color: var(--text-color);
+  margin: 1rem;
+}
+.contenedor__conversor h2{
+  font-size: 2rem;
+  text-align: center;
+}
+.contenedor__conversor select,input,button{
+  text-align: center;
+  margin: 0.5rem;
+  width: 60%;
+}
 .contenedor__frase{
     display: flex;
     flex-direction: column;

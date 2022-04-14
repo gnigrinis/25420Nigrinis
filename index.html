@@ -21,6 +21,26 @@
         </div>
     </header>
     <main class="main">
+        <section class="contenedor__conversor">
+            <h2>Conversor de divísas</h2>
+            <select id="source">
+              <option value="">Elegir divisa orígen</option>
+              <option value="USD">Dolar Americano</option>
+              <option value="EUR">Euro</option>
+              <option value="COP">Peso Colombiano</option>
+              <option value="ARS">Peso Argentino</option>
+            </select>
+            <input type="text" placeholder="Cantidad" id="quantity" value="0">
+            <select id="target">
+              <option value="">Elegir divisa destíno</option>
+              <option value="USD">Dolar Americano</option>
+              <option value="EUR">Euro</option>
+              <option value="COP">Peso Colombiano</option>
+              <option value="ARS">Peso Argentino</option>
+            </select>
+          <button id="convertir">Convertir</button>
+          <input type="text" placeholder="Resultado" id="resultado">
+        </section>
         <section class="contenedor__frase">
             <h2> Frase del día </h2>
             <p id="frase">
@@ -65,5 +85,6 @@
     <script src="js/objetoConstructor.js"></script>
     <script src="./js/miArchivo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
+    <script src="js/conversor.js"></script>
 </body>
 </html>
