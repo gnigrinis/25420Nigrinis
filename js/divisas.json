@@ -1,0 +1,64 @@
+{
+  "divisas":[
+  {"base": "USD/EUR",
+  "result": {
+    "EUR": 0.92,
+    "rate": 0.9168
+  }},
+  {"base": "USD/COP",
+  "result": {
+    "COP": 3722.21,
+    "rate": 3722.20996
+    }},
+  {"base": "USD/ARS",
+  "result": {
+    "ARS": 112.97,
+    "rate": 112.97287
+    }},
+  {"base": "EUR/USD",
+  "result": {
+    "USD": 1.09,
+    "rate": 1.09082
+    }},
+  {"base": "EUR/COP",
+  "result": {
+    "COP": 4060.09,
+    "rate": 4060.09218
+    }},
+  {"base": "EUR/ARS",
+  "result": {
+    "ARS": 123.23,
+    "rate": 123.23299
+    }},
+  {"base": "ARS/USD",
+  "result": {
+    "USD": 0.01,
+    "rate": 0.00885
+    }},
+  {"base": "ARS/EUR",
+  "result": {
+    "EUR": 0.01,
+    "rate": 0.00811
+    }},
+  {"base": "ARS/COP",
+  "result": {
+    "COP": 32.95,
+    "rate": 32.94647
+  }},
+  {"base": "COP/USD",
+  "result": {
+    "USD": 0,
+    "rate": 0.00027
+    }},
+    {"base": "COP/EUR",
+    "result": {
+      "EUR": 0,
+      "rate": 0.00025
+      }},
+    {"base": "COP/ARS",
+    "result": {
+      "ARS": 0.03,
+      "rate": 0.03034
+      }}
+  ]
+}
